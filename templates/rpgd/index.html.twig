@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="section">
+    <div class="section__title">
+        <h1>Politique de confidentialité<h1>
+    </div>
+    <div>
+        <h3>Politique de confidentialité</h3>
+
+        <p>Notre engagement envers la confidentialité de vos données personnelles est primordial. Cette politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons les informations que vous nous fournissez lorsque vous utilisez nos services.</p>
+
+        <h3>Collecte d'informations :</h3>
+
+        <p>Nous recueillons des informations lorsque vous interagissez avec nos services. Cela peut inclure des informations fournies volontairement par vous-même lors de l'inscription, de l'achat de produits ou services, ou lorsque vous communiquez avec nous via des formulaires en ligne ou d'autres moyens de communication.</p>
+
+        <p>Les informations collectées peuvent inclure, entre autres, votre nom, votre adresse électronique, votre adresse postale, vos informations de paiement, vos préférences de communication, et des données d'utilisation telles que des journaux de connexion, des cookies, etc.</p>
+
+        <h3>Utilisation des informations :</h3>
+
+        <p>Nous utilisons les informations collectées pour vous fournir nos services, répondre à vos demandes, personnaliser votre expérience, traiter vos paiements, améliorer nos produits et services, et communiquer avec vous concernant les mises à jour, les offres spéciales, ou d'autres informations pertinentes.</p>
+
+        <h3>Protection des données :</h3>
+
+        <p>Nous prenons des mesures de sécurité appropriées pour protéger vos informations personnelles contre tout accès non autorisé, utilisation abusive, altération, divulgation ou destruction.</p>
+
+        <h3>Partage d'informations :</h3>
+
+        <p>Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers sans votre consentement, sauf si cela est nécessaire pour fournir nos services ou si requis par la loi.</p>
+
+        <h3>Vos droits :</h3>
+
+        <p>Vous avez le droit de demander l'accès à vos données personnelles, de les corriger, de les mettre à jour, de les supprimer ou de limiter leur traitement. Vous pouvez également vous opposer au traitement de vos données personnelles ou demander leur transfert.</p>
+
+        <h3>Cookies :</h3>
+
+        <p>Nous utilisons des cookies pour améliorer votre expérience de navigation. Vous pouvez gérer les préférences des cookies via les paramètres de votre navigateur.</p>
+
+        <h3>Modifications de la politique de confidentialité :</h3>
+
+        <p>Nous nous réservons le droit de mettre à jour ou de modifier cette politique de confidentialité à tout moment. Toute modification sera publiée sur cette page avec une date de révision mise à jour.</p>
+
+        <h3>Contact :</h3>
+
+        <p>Si vous avez des questions concernant cette politique de confidentialité ou sur la manière dont nous gérons vos données personnelles, veuillez nous contacter à <b>penséeslittéraires@help.com</b>.</p>
+
+        <small>Cette politique de confidentialité est en vigueur à partir du 02/01/2024.</small>
+    </div>
+<section>
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}

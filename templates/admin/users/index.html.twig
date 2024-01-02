@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <section class="section__title section">
+                <h1>Listes des utilisateurs</h1>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            {% include '_partials/_adminnav.html.twig' %}
+            <main class="col-9 border border-ligth bg-light p-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                                <th>Vérifié(e)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.firstname }}</td>
+                                    <td>{{ user.lastname }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>
+                                        {% for role in user.roles %}
+                                            {% if role == 'ROLE_ADMIN' %}
+                                                {% set name = 'Administrateur' %}
+                                                {% set color = 'danger' %}
+                                                {% else %}
+                                                {% set name = 'Membre' %}
+                                                {% set color = 'primary' %}
+                                            {% endif %}
+                                            <span class="badge bg-{{ color }}">{{ name }}</span>
+                                        {% endfor %}
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <a href="" class="btn btn-success">Modifier</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </main>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== LOGIN ====================-->
+<div class="register grid" id="register-content">
+    <form action="" class="register__form grid" method="post">
+        <h3 class="register__title">Créer un compte</h3>
+
+        <div class="register__groupe grid">
+            <h4>Identité</h4>
+            {{ form_start(registrationForm) }}
+                <div>
+                    <label class="register__label">Prénom</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.firstname, {'attr': {'class': 'register__input', 'placeholder': 'Votre prénom'}}) }}
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label class="register__label">Nom de famille</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.lastname, {'attr': {'class': 'register__input', 'placeholder': 'Votre nom de famille'}}) }}
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label class="register__label">E-mail</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'register__input', 'placeholder': 'Votre e-mail'}}) }}
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label class="register__label">Mot de passe</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'register__input', 'placeholder': 'Votre mot de passe'}}) }}
+                    </fieldset>
+                </div>                    
+                
+            <h4>Coordonnées</h4>
+
+                <div>
+                    <label class="register__label">Adresse</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.address, {'attr': {'class': 'register__input', 'placeholder': 'Votre adresse'}}) }}
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label class="register__label">Ville</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.city, {'attr': {'class': 'register__input', 'placeholder': 'Votre ville'}}) }}
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label class="register__label">Code postal</label>
+                    <fieldset class="">
+                        {{ form_widget(registrationForm.zipcode, {'attr': {'class': 'register__input', 'placeholder': 'Votre code postal'}}) }}
+                    </fieldset>
+                </div>
+
+
+                {{ form_widget(registrationForm.RGPDConsent, {'attr': {'class': 'register__input-rgpd'}}) }}
+
+
+            <div class="">
+                <span class="register__login">
+                    J'ai déjà un compte !<a href="{{ path('app_login') }}">Me connecter</a>
+                </span>
+                <a href="" class="login__forgot">Mot de passe oublié ?</a>
+                <button type="submit" class="register__button button" >M'inscrire</button>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </form>
+</div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}
+
+{# <section class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Inscription</h1>
+
+
+            {{ form_start(registrationForm) }}
+                <fieldset class="mb-3">
+                    <legend>Identité</legend>
+                    {{ form_row(registrationForm.lastname) }}
+                    {{ form_row(registrationForm.firstname) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {label: 'Mot de Passe'}) }}
+                </fieldset>
+
+                <fieldset class="mb-3">
+                    <legend>Coordonnées</legend>
+                        {{ form_row(registrationForm.address) }}
+                        {{ form_row(registrationForm.city) }}
+                        {{ form_row(registrationForm.zipcode) }}
+                </fieldset>
+                        {{ form_row(registrationForm.RGPDConsent) }}
+
+                <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button>
+                <a href="{{ path('app_login') }}" class="btn btn-secondary">Me connecter</a>
+            {{ form_end(registrationForm) }}
+
+            </div>
+        </div>
+</section> #}
+

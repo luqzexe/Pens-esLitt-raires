@@ -1,0 +1,127 @@
+{% set imagePath = '/image/bg-newsletters.jpg' %}
+{% set imagePath2 = '/image/logo-penséeslittéraires.png' %}
+<!--==================== NEWSLETTERS ====================-->
+<section class="newsletters section">
+    <div class="newsletters__container">
+        {% if imagePath is not null %}
+            <img src="{{ asset(imagePath) }}" alt="image newsletters" class="newsletters__bg">
+        {% endif %}
+        <div class="newsletters__data container grid">
+            <h2 class="newsletters__title section__title">
+                Ne ratez aucune nouveauté,<br> abonnez-vous !
+            </h2>
+
+            <form action="" class="newsletters__form">
+                <input type="text" placeholder="Entrez votre e-mail" class="newsletters__input">
+                <button type"submit" class="newsletters__button button">S'abonner</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--==================== FOOTER ====================-->
+<footer class="footer">
+    <div class="footer__container container grid">
+        <div>
+            <a href="{{ path('main') }}" class="nav__logo">
+                {% if imagePath2 is not null %}
+                    <img src="{{ asset(imagePath2) }}" alt="">
+                {% endif %}
+            </a>
+            <p class="footer__description">
+                Trouvez et explorez les meilleurs <br>
+                ouvrages de vos <br> 
+                philosophes préférés.</p>
+        </div>
+
+        <div class="footer__data grid">
+            <div>
+                <h3 class="footer__title">À propos</h3>
+
+                <ul class="footer__links">
+                    <li>
+                        <a class="footer__link">Récompenses</a>
+                    </li>
+
+                    <li>
+                        <a class="footer__link">FAQ</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('privacy_policy') }}"  class="footer__link">Politique de confidentialité</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_cgu') }}"class="footer__link">Conditions générales d'utilisation</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Notre Entreprise</h3>
+
+                <ul class="footer__links">
+                    <li>
+                        <a class="footer__link">Blog</a>
+                    </li>
+
+                    <li>
+                        <a class="footer__link">Communauté</a>
+                    </li>
+
+                    <li>
+                        <a class="footer__link">Notre équipe</a>
+                    </li>
+                    
+                    <li>
+                        <a class="footer__link">Centre d'Aide</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Contact</h3>
+
+                <ul class="footer__links">
+                    <li>
+                        <address class="footer__info">
+                            42 Av. de la Liberté <br>
+                            Paris 75001, France
+                        </address>
+                    </li>
+
+                     <li>
+                        <address class="footer__info">
+                            penséeslittéraires@help.com <br>
+                            01 23 45 67 89
+                        </address>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">Réseaux sociaux</h3>
+
+                <div class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-facebook-circle' ></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-instagram' ></i>
+                    </a>
+
+                    <a href="https://www.twitter.com/" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-twitter' ></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="footer__copy">
+        &#169; Tous droits déservés by PenséesLittéraires.
+    </span>
+</footer>
+
+<!--========== SCROLL UP ==========-->

@@ -1,0 +1,110 @@
+{% set imagePath = '/image/logo-penséeslittéraires.png' %}
+<!--==================== HEADER ====================-->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="{{ path('main') }}" class="nav__logo">
+          {% if imagePath is not null %}
+            <img src="{{ asset(imagePath) }}" alt="">
+          {% endif %}
+      </a>
+      
+      <!--==================== NAVBAR ====================-->
+      <div class="nav__menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="{{ path('main') }}" class="nav__link">
+              <i class='bx bx-home-alt-2'></i>
+              <span>Accueil</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="{{ path('products_index') }}" class="nav__link">
+              <i class='bx bx-book-alt'></i>
+              <span>Nos Livres</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="{{ path('categories_index') }}" class="nav__link">
+              <i class='bx bx-category' ></i>
+              <span>Catégories</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav__actions">
+
+        <!--==================== BOUTON DE RECHERCHE ====================-->
+        <i class='bx bx-search-alt-2 search-button' id="search-button"></i>
+
+        <!--==================== BOUTON THEME ====================-->
+        <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+        {% if app.user %}
+        <!--==================== BOUTON MENU ADMIN ====================-->
+          {% if is_granted('ROLE_ADMIN') %}
+          <a href="{{ path('admin_index') }}">
+            <i class='bx bx-id-card admin-button' id="admin-button"></i>
+          </a>
+          {% endif %}
+        <!--==================== BOUTON PANIER (si connecté) ====================-->       
+          <a href="{{ path('cart_index') }}">
+            <i class='bx bx-cart profil-button' id="profil-button"></i>
+          </a>
+        <!--==================== BOUTON DECONNEXION (si connecté) ====================-->
+          <a href="{{ path('app_logout') }}">
+            <i class='bx bx-log-out logout-button' id="logout-button"></i>
+          </a>
+        {% else %}
+        <!--==================== CONNEXION ====================-->
+        <a href="{{ path('app_login') }}">
+          <i class='bx bx-user login-button' id="login-button"></i>
+        </a>
+        {% endif %} 
+      </div>
+    </nav>
+  </header>
+
+  <!--==================== SEARCH ====================-->
+  <div class="search" id="search-content">
+    <form action="" class="search__form">
+      <i class='bx bx-search-alt-2 search__icon'></i>
+      <input type="search" placeholder="Que recherchez-vous ?" class="search__input">
+    </form>
+
+    <i class='bx bx-x search__close' id="search-close" ></i>
+  </div>
+
+<!--==================== LOGIN ====================-->
+  {# <div class="login grid" id="login-content">
+    <form action="" class="login__form grid">
+    {% if error %}
+      <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+      <div class="mb-3">
+      Vous êtes connecté(e) en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+      </div>
+    {% endif %}
+
+      <h3 class="login__title">Connexion</h3>
+
+      <div class="login__groupe grid">
+        <div>
+          <label for="login-email" class="login__label">Email</label>
+          <input type="email" placeholder="Votre e-mail" id="login-email" class="login__input" value="{{ last_username }}" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="" class="login__label">Mot de passe</label>
+          <input type="password" placeholder="Votre mot de passe" id="" class="login__input" autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+      </div>
+    </form>
+  </div> #}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<section class="section__title section">
+                <h1>Liste des catégories</h1>
+</section>
+    <div class="container">
+        <div class="row">
+            {% include '_partials/_adminnav.html.twig' %}
+            <main class="col-9 border border-ligth bg-light p-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Parent</th>
+                                <th>Slug</th>
+                                <th>Ordre</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for categorie in categories %}
+                                <tr>
+                                    <td>{{ categorie.id }}</td>
+                                    <td>{{ categorie.name }}</td>
+                                    <td>
+                                        {% if categorie.parent is not null %}
+                                            {{ categorie.parent.name }}    
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ categorie.slug }}</td>
+                                    <td>{{ categorie.categoryOrder}}</td>
+                                    <td>
+                                        <a href="{{ path('admin_categories_edit', {id: categorie.id} ) }}" class="btn btn-success">Modifier</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('admin_categories_delete', {id: categorie.id} ) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')" class="btn btn-danger">Supprimer</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </main>
+        </div>
+    </div>
+{% endblock %}

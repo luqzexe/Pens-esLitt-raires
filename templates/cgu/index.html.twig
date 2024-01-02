@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions d'utilisations{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="section">
+    <div class="section__title">
+        <h1>Conditions Générales d'Utilisation<h1>
+    </div>
+    <div>
+        <h3>Acceptation des conditions</h3>
+
+        <p>En utilisant ce service, vous acceptez de vous conformer à ces Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce service.</p>
+
+        <h3>Description du service</h3>
+
+        <p>Ce service propose la vente de livre philosophique, permettant aux utilisateurs d'acheter ces livres.</p>
+
+
+        <h3>Compte utilisateur</h3>
+
+        <p>L'utilisateur est responsable de maintenir la confidentialité de ses informations de connexion.</p>
+
+        <p>L'utilisateur est responsable de toute activité sur son compte.</p>
+
+        <h3>Utilisation autorisée</h3>
+
+        <p>L'utilisateur s'engage à n'utiliser ce service que conformément à la loi et aux présentes conditions.</p>
+
+        <p>L'utilisateur ne doit pas utiliser ce service de manière à perturber, endommager ou nuire à d'autres utilisateurs.</p>
+
+        <h3>Propriété intellectuelle</h3>
+
+        <p>Tout le contenu du service, sauf indication contraire, est la propriété de PenséesLittéraires.</p>
+
+        <p>L'utilisateur ne peut pas copier, modifier ou distribuer le contenu du service sans autorisation.</p>
+
+        <h3>Résiliation</h3>
+
+        <p>PenséesLittéraires se réserve le droit de résilier ou de suspendre un compte utilisateur en cas de violation des présentes conditions.</p>
+
+        <h3>Responsabilité</h3>
+
+        <p>PenséesLittéraires n'est pas responsable des dommages directs ou indirects causés par l'utilisation ou l'impossibilité d'utiliser ce service.</p>
+
+        <h3>Modifications des conditions</h3>
+
+        <p>PenséesLittéraires se réserve le droit de modifier les présentes Conditions Générales d'Utilisation à tout moment. Les utilisateurs seront informés des changements par e-mail</p>
+
+        <h3>Loi applicable et juridiction</h3>
+
+        <p>Les présentes Conditions Générales d'Utilisation sont régies par les lois en vigueur dans [juridiction]. Tout litige relatif à ces conditions sera soumis à la compétence exclusive des tribunaux de [lieu].</p>
+
+        <h3>Contact</h3>
+
+        <p>Pour toute question concernant ces Conditions Générales d'Utilisation, veuillez contacter<bold>penséeslittéraires@help.com</bold>.</p>
+
+        <small>Cette politique de confidentialité est en vigueur à partir du 02/01/2024.</small>
+    </div>
+<section>
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}

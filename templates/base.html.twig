@@ -2,17 +2,63 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
         {% block stylesheets %}
-            {{ ux_controller_link_tags() }}
+        <!--=============== FAVICON ===============-->
+        {% set imagePath = '/image/logo-petit-penséeslittéraires.png' %}
+        {% if imagePath is not null %}
+        <link rel="shortcut icon" href="{{ asset(imagePath) }}" type="image/x-icon">
+        {% endif %}
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        <link rel="stylesheet" href="../tarteaucitron/css/tarteaucitron.css">
         {% endblock %}
 
-        {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        <title>{% block title %}{% endblock %} - PenséesLittéraires</title>
     </head>
     <body>
+
+        <!--==================== HEADER ====================-->
+
+        {% include "_partials/_header.html.twig" %}
+
+        <!--==================== MAIN ====================-->
+
+        <main class="main">
         {% block body %}{% endblock %}
+        </main>
+        <!--==================== FOOTER ====================-->
+        
+        {% include "_partials/_footer.html.twig" %}
+
+        <!--========== SCROLL UP ==========-->
+      
+        {% include "_partials/_scrollup.html.twig" %}
+
+
+        {% block javascripts %}
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        
+        <!--=============== SWIPER JS ===============-->
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+
+        <!--=============== BOOSTRAP JS ===============-->
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}" defer></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

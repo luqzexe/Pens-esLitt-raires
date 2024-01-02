@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos livres{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== NOS LIVRES (vue complète) ====================-->
+    <section class="books section" id="books">
+        <h2 class="section__title">
+            Catalogue de nos livres
+        </h2>
+
+        <div class="books__container container">
+            <div class="books__">
+                {% for product in products %}
+                    <div>
+                        <article class="books__card">
+                            {% for image in product.images %}
+                                <img src="{{ asset('assets/uploads/products/' ~ image.name ) }}" alt="Image du produit" class="books__img">
+                            {% endfor %}
+                            <h2 class="books__title">{{ product.name }}</h2>
+
+                            <div class="books__prices">
+                                <span class="books__price">{{ product.price / 100 }}€</span>
+                            </div>
+
+                            <a class="button" href="{{ path('products_details', {slug: product.slug }) }}">Voir le produit</a>
+
+                            <div class="books__actions">
+                                {% if product.stock > 0 %}
+                                    <button><a href="{{ path('cart_add', {id: product.id}) }}"><i class='bx bx-cart-add'></i></a></button>
+                                {% else %}
+                                    <button><i class='bx bx-cart bx bx-x'></i></button>
+                                {% endif %}
+                                    <button><i class='bx bx-heart' ></i></button>
+                            </div>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}
+
+            {# {% for product in products %}
+                    <div class="col-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ product.name }}</h3>
+                                    {% for image in product.images %}
+                                    <div>
+                                        <img src="{{ asset('assets/uploads/products/' ~ image.name ) }}" alt="Image du produit" width="150">
+                                    </div>
+                                    {% endfor %}
+                                <a href="{{ path('products_details', {slug: product.slug }) }}" class="btn btn-primary">Voir le livre</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %} #}
+
+            {# {% if product.stock > 0 %}
+                    <a href="{{ path('cart_add', {id: product.id}) }}" class="btn btn-secondary">Ajouter au panier</a>
+                {% else %}
+                    <p class="text-danger">Temporairment en rupture de stock :(</p>
+                {% endif %} #}

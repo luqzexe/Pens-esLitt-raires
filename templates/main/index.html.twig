@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== HOME ====================-->
+    <section class="home section" id="home">
+        <div class="home__container container grid">
+            <div class="home__data">
+                <h1 class="home__title">Parcourir & <br> selectionner des livres.</h1>
+                <h2><small class="home__subtitle">Là où Commence la Quête de la Sagesse.</small></h2>
+
+                <p class="home__description">
+                    Explorez notre sélection minutieuse, où chaque livre, héritage des plus grands philosophes, est imprégné de la quintessence de la pensée humaine. Trouvez le livre parfait qui éveillera votre esprit et vous transportera vers de nouvelles sphères de compréhension.
+                </p>
+
+                <a href="{{ path('products_index') }}" class="button">Explorer maintenant !</a>
+            </div>
+
+            <div class="home__images">
+                <div class="home__swiper swiper">
+                    <div class="swiper-wrapper">
+                        {% for product in randomProducts %}
+                            {% for image in imagesByProduct[product.id] %}
+                                <article class="home__article swiper-slide">
+                                    <img src="{{ asset('assets/uploads/products/' ~ image.getName() ) }}" alt="{{ product.name }}" class="home__img">
+                                </article>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--==================== SERVICES ====================-->
+    <section class="services section">
+        <div class="services__container container grid">
+            <article class="services__card">
+                <i class='bx bx-package' ></i>
+                <h3 class="services__title">Livraison gratuite</h3>
+                <p class="servies__descption">Frais de livraison offerts sans minimum d'achat.</p>
+            </article>
+
+            <article class="services__card">
+                <i class='bx bx-lock-alt' ></i>
+                <h3 class="services__title">Paiement sécurisé</h3>
+                <p class="servies__descption">Paiement 100% Sécurisé</p>
+            </article>
+
+            <article class="services__card">
+                <i class='bx bx-support'></i>
+                <h3 class="services__title">Assistance 24/7</h3>
+                <p class="servies__descption">Appelez-nous à tout moment</p>
+            </article>
+        </div>
+    </section>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}

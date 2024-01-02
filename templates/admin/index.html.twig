@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <section class="section__title section">
+        <h1>Administration</h1>
+        {% if app.user %}
+            <h4>Bonjour, {{ app.user.firstname }} :)</h4>
+        {% endif %}
+    </section>
+    <div class="col">
+        <div class="row">
+            {% include '_partials/_adminnav.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

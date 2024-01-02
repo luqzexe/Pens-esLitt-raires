@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== LOGIN ====================-->
+    <div class="login grid" id="login-content">
+        <form action="" class="login__form grid" method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes connecté(e) en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+            </div>
+        {% endif %}
+
+            <h3 class="login__title">Connexion</h3>
+
+            <div class="login__groupe grid">
+                <div>
+                    <label for="login-email" class="login__label">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" placeholder="Votre e-mail" id="login-email" class="login__input" autocomplete="email" required autofocus>
+                </div>
+
+                <div>
+                    <label for="login-pass" class="login__label">Mot de passe</label>
+                    <input type="password" placeholder="Entrer votre mot de passe" id="login-pass" class="login__input" name="password" autocomplete="current-password" required>
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}">
+            </div>
+
+            <div class="">
+                <span class="login__signup">
+                    Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">M'inscrire</a>
+                </span>
+                <a href="" class="login__forgot">Mot de passe oublié ?</a>
+                <button type="submit" class="login__button button" >Me connecter</button>
+            </div>
+        </form>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}

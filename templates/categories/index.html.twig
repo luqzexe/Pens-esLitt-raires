@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== NEW BOOKS ====================-->
+    <section class="category section" id="category">
+        <h2 class="section__title">
+            Toutes nos catégories
+        </h2>
+
+        {% for category in categories %}
+            {% if category.products is not empty  %}
+                {% if category.parent == null %}
+                    <div class="section__subtitle">
+                        <h3>{{ category.name }}</h3>
+                    </div>  
+                {% else %}
+                    <div class="category__container container">
+                        <div class="new_swiper">
+                            <div>
+                                <div class="category__card">
+                                    {% set firstProduct = category.products.first %}
+                                        {% if firstProduct %}
+                                            {% set firstImage = firstProduct.images.first %}
+                                            {% if firstImage %}
+                                                <img src="{{ asset('assets/uploads/products/' ~ firstImage.name) }}" alt="{{ firstProduct.name }}" class="category__img">
+                                        {% endif %}
+                                    {% endif %}
+                                    <div>
+                                        <h3 class="category__title">{{ category.name }}</h3>
+                                        <div class="category__descriptions">
+                                            <p class="category__description">{{ category.categoryDesc }}</p>
+                                        </div>
+
+                                        <div class="category__button">
+                                            <a href="{{ path('categories_list', {slug: category.slug }) }}" class="button">Voir la catégorie</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </section>
+
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+{% endblock %}
+
+{# <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Liste des catégories</h1>
+            </div>
+            {% for category in categories %}
+                {% if category.parent == null %}
+                    <div class="col-12">
+                        <h2>{{ category.name }}</h2>
+                    </div>  
+                {% else %}
+                    <div class="col-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ category.name }}</h3>
+                                <a href="{{ path('categories_list', {slug: category.slug }) }}" class="btn btn-primary">Voir les produits</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </main> #}

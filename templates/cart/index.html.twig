@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--==================== PANIER ====================-->
+    <section class="row carts section">
+        <div class="section__title">
+            <h1>Panier</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for element in data %}
+                    <tr>
+                        {% for image in element.product.images %}
+                            <td><img src="{{ asset('assets/uploads/products/' ~ image.name) }}" alt="" width="75"></img></td>
+                        {% endfor %}
+                        <td>{{ element.product.name }}</td>
+                        <td>{{ element.product.price / 100 }}€</td>
+                        <td>{{ element.quantity }}</td>
+                        <td>{{ element.quantity * element.product.price / 100 }}€</td>
+                        <td>
+                            <a href="{{ path('cart_add', {id: element.product.id}) }}" class="btn "><i class='bx bx-plus'></i></a>
+                            <a href="{{ path('cart_remove', {id: element.product.id}) }}" class="btn"><i class='bx bx-minus' ></i></a>
+                            <a href="{{ path('cart_delete', {id: element.product.id}) }}" class="btn" onclick="return confirm('Êtes-vous sûr de supprimer ce produit de votre panier ?')"><i class='bx bx-x' ></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <h2 colspan="6" class="text text-danger">Votre panier est vide</h2>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                        <tr>
+                            <td colspan="3">Total</td>
+                            <td>{{ total / 100 }}€</td>
+                            <td>
+                    {% if data is not empty %}
+                                <a href="{{ path('cart_empty') }}" class="btn " onclick="return confirm('Êtes-vous sûr de vider votre panier ?')"><i class='bx bx-trash' ></i></a>
+                            </td>
+                            <td>
+                                <a href="{{ path('app_orders_add') }}" class="btn ">Passer au paiement<a/>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tfoot>
+            </table>
+    </section>
+{% endblock %}
+

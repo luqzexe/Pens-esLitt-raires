@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie {{ category.name |lower }}{% endblock %}
+
+{% block body %}
+<!--==================== LIVRES (par catégories) ====================-->
+    <section class="books section" id="books">
+        <h2 class="section__title">
+            Catalogue de la catégorie {{ category.name |lower }}
+        <h2>
+
+        <div class="books__container">
+            <dvi class="">
+                {% for product in category.products %}
+                    <div>
+                        <article class="books__card">
+                            {% for image in product.images %}
+                                <img src="{{ asset('assets/uploads/products/' ~ image.name ) }}" alt="Image du produit" class="books__img">
+                            {% endfor %}
+
+                            <h2 class="books__tile">
+                                {{ product.name }}
+                            <h2>
+
+                            <div class="books__prices">
+                                <p>{{ product.minDescription }}</p>
+                            </div>
+
+                            <a class="books__button button" href="{{ path('products_details', {slug: product.slug }) }}">Voir le produit</a>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
